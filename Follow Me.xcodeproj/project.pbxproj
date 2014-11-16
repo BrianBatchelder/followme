@@ -7,14 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D358ACDC1A184E9C002E7E9A /* icon-avatar-60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */; };
+		D358ACDD1A184E9C002E7E9A /* icon-avatar-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */; };
+		D358ACDE1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */; };
+		D358ACDF1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACCB1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25@2x.png */; };
+		D358ACE01A184E9C002E7E9A /* icon-checkbox-unselected-25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACCC1A184E9C002E7E9A /* icon-checkbox-unselected-25x25.png */; };
+		D358ACE11A184E9C002E7E9A /* icon-checkbox-unselected-25x25@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACCD1A184E9C002E7E9A /* icon-checkbox-unselected-25x25@2x.png */; };
+		D358ACE21A184E9C002E7E9A /* THBubbleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACCF1A184E9C002E7E9A /* THBubbleColor.m */; };
+		D358ACE31A184E9C002E7E9A /* THContact.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACD11A184E9C002E7E9A /* THContact.m */; };
+		D358ACE41A184E9C002E7E9A /* THContactBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACD31A184E9C002E7E9A /* THContactBubble.m */; };
+		D358ACE51A184E9C002E7E9A /* THContactPickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACD51A184E9C002E7E9A /* THContactPickerTableViewCell.m */; };
+		D358ACE61A184E9C002E7E9A /* THContactPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D358ACD61A184E9C002E7E9A /* THContactPickerTableViewCell.xib */; };
+		D358ACE71A184E9C002E7E9A /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACD81A184E9C002E7E9A /* THContactPickerView.m */; };
+		D358ACE81A184E9C002E7E9A /* THContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D358ACDA1A184E9C002E7E9A /* THContactPickerViewController.m */; };
+		D358ACE91A184E9C002E7E9A /* THContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D358ACDB1A184E9C002E7E9A /* THContactPickerViewController.xib */; };
 		D3F85C351A17CD76001D3FE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C341A17CD76001D3FE5 /* main.m */; };
 		D3F85C381A17CD76001D3FE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C371A17CD76001D3FE5 /* AppDelegate.m */; };
 		D3F85C3B1A17CD76001D3FE5 /* Follow_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C391A17CD76001D3FE5 /* Follow_Me.xcdatamodeld */; };
-		D3F85C3E1A17CD76001D3FE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C3D1A17CD76001D3FE5 /* ViewController.m */; };
+		D3F85C3E1A17CD76001D3FE5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C3D1A17CD76001D3FE5 /* MapViewController.m */; };
 		D3F85C411A17CD76001D3FE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F85C3F1A17CD76001D3FE5 /* Main.storyboard */; };
 		D3F85C431A17CD76001D3FE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F85C421A17CD76001D3FE5 /* Images.xcassets */; };
 		D3F85C461A17CD76001D3FE5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F85C441A17CD76001D3FE5 /* LaunchScreen.xib */; };
 		D3F85C521A17CD76001D3FE5 /* Follow_MeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85C511A17CD76001D3FE5 /* Follow_MeTests.m */; };
+		D3F85C5C1A17D352001D3FE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F85C5B1A17D352001D3FE5 /* MapKit.framework */; };
+		D3F85C5E1A17D773001D3FE5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */; };
+		D3F85CAB1A181E3F001D3FE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */; };
+		D3F85CC61A1829FC001D3FE5 /* ContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85CC51A1829FC001D3FE5 /* ContactPickerViewController.m */; };
+		D3F85CC91A182E2E001D3FE5 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F85CC81A182E2E001D3FE5 /* WelcomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +47,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60.png"; sourceTree = "<group>"; };
+		D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60@2x.png"; sourceTree = "<group>"; };
+		D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25.png"; sourceTree = "<group>"; };
+		D358ACCB1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25@2x.png"; sourceTree = "<group>"; };
+		D358ACCC1A184E9C002E7E9A /* icon-checkbox-unselected-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-unselected-25x25.png"; sourceTree = "<group>"; };
+		D358ACCD1A184E9C002E7E9A /* icon-checkbox-unselected-25x25@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-unselected-25x25@2x.png"; sourceTree = "<group>"; };
+		D358ACCE1A184E9C002E7E9A /* THBubbleColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THBubbleColor.h; sourceTree = "<group>"; };
+		D358ACCF1A184E9C002E7E9A /* THBubbleColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THBubbleColor.m; sourceTree = "<group>"; };
+		D358ACD01A184E9C002E7E9A /* THContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContact.h; sourceTree = "<group>"; };
+		D358ACD11A184E9C002E7E9A /* THContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContact.m; sourceTree = "<group>"; };
+		D358ACD21A184E9C002E7E9A /* THContactBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactBubble.h; sourceTree = "<group>"; };
+		D358ACD31A184E9C002E7E9A /* THContactBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactBubble.m; sourceTree = "<group>"; };
+		D358ACD41A184E9C002E7E9A /* THContactPickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerTableViewCell.h; sourceTree = "<group>"; };
+		D358ACD51A184E9C002E7E9A /* THContactPickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerTableViewCell.m; sourceTree = "<group>"; };
+		D358ACD61A184E9C002E7E9A /* THContactPickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THContactPickerTableViewCell.xib; sourceTree = "<group>"; };
+		D358ACD71A184E9C002E7E9A /* THContactPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerView.h; sourceTree = "<group>"; };
+		D358ACD81A184E9C002E7E9A /* THContactPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerView.m; sourceTree = "<group>"; };
+		D358ACD91A184E9C002E7E9A /* THContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactPickerViewController.h; sourceTree = "<group>"; };
+		D358ACDA1A184E9C002E7E9A /* THContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactPickerViewController.m; sourceTree = "<group>"; };
+		D358ACDB1A184E9C002E7E9A /* THContactPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THContactPickerViewController.xib; sourceTree = "<group>"; };
 		D3F85C2F1A17CD76001D3FE5 /* Follow Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Follow Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F85C331A17CD76001D3FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3F85C341A17CD76001D3FE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3F85C361A17CD76001D3FE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3F85C371A17CD76001D3FE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D3F85C3A1A17CD76001D3FE5 /* Follow_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Follow_Me.xcdatamodel; sourceTree = "<group>"; };
-		D3F85C3C1A17CD76001D3FE5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D3F85C3D1A17CD76001D3FE5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D3F85C3C1A17CD76001D3FE5 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D3F85C3D1A17CD76001D3FE5 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D3F85C401A17CD76001D3FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3F85C421A17CD76001D3FE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3F85C451A17CD76001D3FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D3F85C4B1A17CD76001D3FE5 /* Follow MeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Follow MeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F85C501A17CD76001D3FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3F85C511A17CD76001D3FE5 /* Follow_MeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Follow_MeTests.m; sourceTree = "<group>"; };
+		D3F85C5B1A17D352001D3FE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D3F85CC41A1829FC001D3FE5 /* ContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactPickerViewController.h; sourceTree = "<group>"; };
+		D3F85CC51A1829FC001D3FE5 /* ContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactPickerViewController.m; sourceTree = "<group>"; };
+		D3F85CC71A182E2E001D3FE5 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		D3F85CC81A182E2E001D3FE5 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F85CAB1A181E3F001D3FE5 /* UIKit.framework in Frameworks */,
+				D3F85C5E1A17D773001D3FE5 /* CoreLocation.framework in Frameworks */,
+				D3F85C5C1A17D352001D3FE5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +111,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D358ACC71A184E9C002E7E9A /* THContactPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */,
+				D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */,
+				D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */,
+				D358ACCB1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25@2x.png */,
+				D358ACCC1A184E9C002E7E9A /* icon-checkbox-unselected-25x25.png */,
+				D358ACCD1A184E9C002E7E9A /* icon-checkbox-unselected-25x25@2x.png */,
+				D358ACCE1A184E9C002E7E9A /* THBubbleColor.h */,
+				D358ACCF1A184E9C002E7E9A /* THBubbleColor.m */,
+				D358ACD01A184E9C002E7E9A /* THContact.h */,
+				D358ACD11A184E9C002E7E9A /* THContact.m */,
+				D358ACD21A184E9C002E7E9A /* THContactBubble.h */,
+				D358ACD31A184E9C002E7E9A /* THContactBubble.m */,
+				D358ACD41A184E9C002E7E9A /* THContactPickerTableViewCell.h */,
+				D358ACD51A184E9C002E7E9A /* THContactPickerTableViewCell.m */,
+				D358ACD61A184E9C002E7E9A /* THContactPickerTableViewCell.xib */,
+				D358ACD71A184E9C002E7E9A /* THContactPickerView.h */,
+				D358ACD81A184E9C002E7E9A /* THContactPickerView.m */,
+				D358ACD91A184E9C002E7E9A /* THContactPickerViewController.h */,
+				D358ACDA1A184E9C002E7E9A /* THContactPickerViewController.m */,
+				D358ACDB1A184E9C002E7E9A /* THContactPickerViewController.xib */,
+			);
+			name = THContactPicker;
+			path = ContactPicker;
+			sourceTree = "<group>";
+		};
 		D3F85C261A17CD76001D3FE5 = {
 			isa = PBXGroup;
 			children = (
+				D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */,
+				D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */,
+				D3F85C5B1A17D352001D3FE5 /* MapKit.framework */,
 				D3F85C311A17CD76001D3FE5 /* Follow Me */,
 				D3F85C4E1A17CD76001D3FE5 /* Follow MeTests */,
 				D3F85C301A17CD76001D3FE5 /* Products */,
@@ -83,15 +163,20 @@
 		D3F85C311A17CD76001D3FE5 /* Follow Me */ = {
 			isa = PBXGroup;
 			children = (
+				D358ACC71A184E9C002E7E9A /* THContactPicker */,
+				D3F85C3F1A17CD76001D3FE5 /* Main.storyboard */,
 				D3F85C361A17CD76001D3FE5 /* AppDelegate.h */,
 				D3F85C371A17CD76001D3FE5 /* AppDelegate.m */,
-				D3F85C3C1A17CD76001D3FE5 /* ViewController.h */,
-				D3F85C3D1A17CD76001D3FE5 /* ViewController.m */,
-				D3F85C3F1A17CD76001D3FE5 /* Main.storyboard */,
+				D3F85CC71A182E2E001D3FE5 /* WelcomeViewController.h */,
+				D3F85CC81A182E2E001D3FE5 /* WelcomeViewController.m */,
+				D3F85C3C1A17CD76001D3FE5 /* MapViewController.h */,
+				D3F85C3D1A17CD76001D3FE5 /* MapViewController.m */,
 				D3F85C421A17CD76001D3FE5 /* Images.xcassets */,
 				D3F85C441A17CD76001D3FE5 /* LaunchScreen.xib */,
 				D3F85C391A17CD76001D3FE5 /* Follow_Me.xcdatamodeld */,
 				D3F85C321A17CD76001D3FE5 /* Supporting Files */,
+				D3F85CC41A1829FC001D3FE5 /* ContactPickerViewController.h */,
+				D3F85CC51A1829FC001D3FE5 /* ContactPickerViewController.m */,
 			);
 			path = "Follow Me";
 			sourceTree = "<group>";
@@ -202,9 +287,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D358ACDD1A184E9C002E7E9A /* icon-avatar-60x60@2x.png in Resources */,
 				D3F85C411A17CD76001D3FE5 /* Main.storyboard in Resources */,
 				D3F85C461A17CD76001D3FE5 /* LaunchScreen.xib in Resources */,
+				D358ACDF1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25@2x.png in Resources */,
+				D358ACDE1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png in Resources */,
+				D358ACDC1A184E9C002E7E9A /* icon-avatar-60x60.png in Resources */,
+				D358ACE01A184E9C002E7E9A /* icon-checkbox-unselected-25x25.png in Resources */,
 				D3F85C431A17CD76001D3FE5 /* Images.xcassets in Resources */,
+				D358ACE61A184E9C002E7E9A /* THContactPickerTableViewCell.xib in Resources */,
+				D358ACE91A184E9C002E7E9A /* THContactPickerViewController.xib in Resources */,
+				D358ACE11A184E9C002E7E9A /* icon-checkbox-unselected-25x25@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,10 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F85CC61A1829FC001D3FE5 /* ContactPickerViewController.m in Sources */,
 				D3F85C3B1A17CD76001D3FE5 /* Follow_Me.xcdatamodeld in Sources */,
 				D3F85C381A17CD76001D3FE5 /* AppDelegate.m in Sources */,
-				D3F85C3E1A17CD76001D3FE5 /* ViewController.m in Sources */,
+				D358ACE81A184E9C002E7E9A /* THContactPickerViewController.m in Sources */,
+				D3F85C3E1A17CD76001D3FE5 /* MapViewController.m in Sources */,
+				D358ACE41A184E9C002E7E9A /* THContactBubble.m in Sources */,
 				D3F85C351A17CD76001D3FE5 /* main.m in Sources */,
+				D358ACE21A184E9C002E7E9A /* THBubbleColor.m in Sources */,
+				D358ACE31A184E9C002E7E9A /* THContact.m in Sources */,
+				D358ACE51A184E9C002E7E9A /* THContactPickerTableViewCell.m in Sources */,
+				D3F85CC91A182E2E001D3FE5 /* WelcomeViewController.m in Sources */,
+				D358ACE71A184E9C002E7E9A /* THContactPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +448,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Brian/Source/Follow,
+					Me/3rdParty/THContactPicker/ContactPicker,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Follow Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/Brian/Source/Follow Me/3rdParty/THContactPicker/ContactPicker";
 			};
 			name = Debug;
 		};
@@ -357,9 +466,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Brian/Source/Follow,
+					Me/3rdParty/THContactPicker/ContactPicker,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "Follow Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/Brian/Source/Follow Me/3rdParty/THContactPicker/ContactPicker";
 			};
 			name = Release;
 		};
@@ -416,6 +533,7 @@
 				D3F85C571A17CD76001D3FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3F85C581A17CD76001D3FE5 /* Build configuration list for PBXNativeTarget "Follow MeTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +542,7 @@
 				D3F85C5A1A17CD76001D3FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
