@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import <Parse/Parse.h>
 
 @interface MapViewController ()
 
@@ -48,6 +49,16 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
+    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+
+    // save to Parse
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
+    
+    PFObject *location = [PFObject objectWithClassName:@"BDBLocation"];
+    location[@"user"] = [PFUser currentUser];
+    location[@"location"] = point;
+    location[@"time"] = [NSDate date];
+    [location saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {
