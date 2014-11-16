@@ -150,8 +150,6 @@
     // location[@"userid"] gives you PFUser
     // location[@"location"] gives you PFGeoPoint
     
-
-    
     
     PFGeoPoint *newLoc = location[@"location"];
     NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
@@ -160,7 +158,10 @@
     // Add an annotation
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = coordinates;
-    point.title = @"New Spot";
+
+    PFUser *user = location[@"userid"];
+    [user fetchIfNeeded];
+    point.title = user[@"username"];
     
     self.mapView.centerCoordinate = coordinates;
     
