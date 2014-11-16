@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import "ContactPickerViewController.h"
+#import "MapViewController.h"
 #import <Parse/Parse.h>
 
 @interface WelcomeViewController ()
@@ -43,14 +44,16 @@
 {
     if ([[segue identifier] isEqualToString:@"showContactPicker"]) {
         [(ContactPickerViewController *)[segue destinationViewController] setPickerDelegate:self];
+    } else if ([[segue identifier] isEqualToString:@"showMapView"]) {
+        [(MapViewController *)[segue destinationViewController] setFollowers:self.followers];
     }
 }
 
 #pragma mark - Delegate
 
-- (void)contactPickerViewControllerPickedContacts:(NSMutableArray *)selectedContacts {
-    if ([selectedContacts count] > 0) {
-        self.followers = selectedContacts;
+- (void)contactPickerViewControllerPickedContacts:(NSMutableArray *)selectedUsers {
+    if ([selectedUsers count] > 0) {
+        self.followers = selectedUsers;
         [self performSegueWithIdentifier:@"showMapView" sender:self];
     }
 }
