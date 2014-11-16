@@ -1,5 +1,5 @@
 followme
 ========
 
-Follow-Me project - Startup Weekend 2014
+Follow-Me project - Startup Weekend November2014
 
