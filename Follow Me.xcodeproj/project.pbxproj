@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D33748DE1A18535F00BDC1F7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748DC1A18535F00BDC1F7 /* Bolts.framework */; };
+		D33748DF1A18535F00BDC1F7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748DD1A18535F00BDC1F7 /* Parse.framework */; };
+		D33748E11A1853A300BDC1F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748E01A1853A300BDC1F7 /* AudioToolbox.framework */; };
+		D33748E31A1853AA00BDC1F7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748E21A1853AA00BDC1F7 /* CFNetwork.framework */; };
+		D33748E51A1853B300BDC1F7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748E41A1853B300BDC1F7 /* CoreGraphics.framework */; };
+		D33748E71A1853C100BDC1F7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748E61A1853C100BDC1F7 /* libz.dylib */; };
+		D33748E91A1853CA00BDC1F7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748E81A1853CA00BDC1F7 /* MobileCoreServices.framework */; };
+		D33748EB1A1853D100BDC1F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748EA1A1853D100BDC1F7 /* QuartzCore.framework */; };
+		D33748ED1A1853D900BDC1F7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748EC1A1853D900BDC1F7 /* Security.framework */; };
+		D33748EF1A1853E000BDC1F7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748EE1A1853E000BDC1F7 /* StoreKit.framework */; };
+		D33748F11A1853E900BDC1F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748F01A1853E900BDC1F7 /* SystemConfiguration.framework */; };
+		D33748F31A18551800BDC1F7 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33748F21A18551800BDC1F7 /* ParseUI.framework */; };
 		D358ACDC1A184E9C002E7E9A /* icon-avatar-60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */; };
 		D358ACDD1A184E9C002E7E9A /* icon-avatar-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */; };
 		D358ACDE1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */; };
@@ -47,6 +59,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D33748DC1A18535F00BDC1F7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		D33748DD1A18535F00BDC1F7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		D33748E01A1853A300BDC1F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D33748E21A1853AA00BDC1F7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D33748E41A1853B300BDC1F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D33748E61A1853C100BDC1F7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D33748E81A1853CA00BDC1F7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D33748EA1A1853D100BDC1F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D33748EC1A1853D900BDC1F7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D33748EE1A1853E000BDC1F7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D33748F01A1853E900BDC1F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D33748F21A18551800BDC1F7 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60.png"; sourceTree = "<group>"; };
 		D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60@2x.png"; sourceTree = "<group>"; };
 		D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25.png"; sourceTree = "<group>"; };
@@ -95,9 +119,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3F85CAB1A181E3F001D3FE5 /* UIKit.framework in Frameworks */,
+				D33748F11A1853E900BDC1F7 /* SystemConfiguration.framework in Frameworks */,
+				D33748EF1A1853E000BDC1F7 /* StoreKit.framework in Frameworks */,
+				D33748ED1A1853D900BDC1F7 /* Security.framework in Frameworks */,
+				D33748EB1A1853D100BDC1F7 /* QuartzCore.framework in Frameworks */,
+				D33748E91A1853CA00BDC1F7 /* MobileCoreServices.framework in Frameworks */,
+				D33748E71A1853C100BDC1F7 /* libz.dylib in Frameworks */,
 				D3F85C5E1A17D773001D3FE5 /* CoreLocation.framework in Frameworks */,
+				D33748E51A1853B300BDC1F7 /* CoreGraphics.framework in Frameworks */,
+				D33748E31A1853AA00BDC1F7 /* CFNetwork.framework in Frameworks */,
+				D33748E11A1853A300BDC1F7 /* AudioToolbox.framework in Frameworks */,
+				D3F85CAB1A181E3F001D3FE5 /* UIKit.framework in Frameworks */,
 				D3F85C5C1A17D352001D3FE5 /* MapKit.framework in Frameworks */,
+				D33748F31A18551800BDC1F7 /* ParseUI.framework in Frameworks */,
+				D33748DE1A18535F00BDC1F7 /* Bolts.framework in Frameworks */,
+				D33748DF1A18535F00BDC1F7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +147,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D33748DB1A18534300BDC1F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D33748F21A18551800BDC1F7 /* ParseUI.framework */,
+				D33748F01A1853E900BDC1F7 /* SystemConfiguration.framework */,
+				D33748EE1A1853E000BDC1F7 /* StoreKit.framework */,
+				D33748EC1A1853D900BDC1F7 /* Security.framework */,
+				D33748EA1A1853D100BDC1F7 /* QuartzCore.framework */,
+				D33748E81A1853CA00BDC1F7 /* MobileCoreServices.framework */,
+				D33748E61A1853C100BDC1F7 /* libz.dylib */,
+				D33748E41A1853B300BDC1F7 /* CoreGraphics.framework */,
+				D33748E21A1853AA00BDC1F7 /* CFNetwork.framework */,
+				D33748E01A1853A300BDC1F7 /* AudioToolbox.framework */,
+				D33748DC1A18535F00BDC1F7 /* Bolts.framework */,
+				D33748DD1A18535F00BDC1F7 /* Parse.framework */,
+				D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */,
+				D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */,
+				D3F85C5B1A17D352001D3FE5 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D358ACC71A184E9C002E7E9A /* THContactPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +200,7 @@
 		D3F85C261A17CD76001D3FE5 = {
 			isa = PBXGroup;
 			children = (
-				D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */,
-				D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */,
-				D3F85C5B1A17D352001D3FE5 /* MapKit.framework */,
+				D33748DB1A18534300BDC1F7 /* Frameworks */,
 				D3F85C311A17CD76001D3FE5 /* Follow Me */,
 				D3F85C4E1A17CD76001D3FE5 /* Follow MeTests */,
 				D3F85C301A17CD76001D3FE5 /* Products */,
@@ -448,6 +504,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Brian/Source/Follow,
@@ -466,6 +526,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Brian/Source/Follow,

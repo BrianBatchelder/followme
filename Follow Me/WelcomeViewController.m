@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import "ContactPickerViewController.h"
+#import <Parse/Parse.h>
 
 @interface WelcomeViewController ()
 
@@ -19,6 +20,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.followers = [[NSMutableArray alloc] init];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    PFUser *currentUser = [PFUser currentUser];
+    if (!currentUser) {
+        PFLogInViewController *logInController = [[PFLogInViewController alloc] init];
+        logInController.delegate = self;
+        [self presentViewController:logInController animated:YES completion:nil];
+    }
+    
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,5 +55,13 @@
     }
 }
 
+- (void)logInViewController:(PFLogInViewController *)controller
+               didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

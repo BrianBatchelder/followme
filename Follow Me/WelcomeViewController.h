@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ContactPickerViewController.h"
+#import <ParseUI/ParseUI.h>
 
-@interface WelcomeViewController : UIViewController <ContactPickerViewControllerDelegate>
+@interface WelcomeViewController : UIViewController <ContactPickerViewControllerDelegate,PFLogInViewControllerDelegate>
 
 @property (strong,nonatomic) NSMutableArray *followers;
 
