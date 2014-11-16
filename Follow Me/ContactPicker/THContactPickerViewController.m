@@ -102,6 +102,16 @@ UIBarButtonItem *barButton;
                 CFRelease(phonesRef);
             }
             
+            // Get email address
+            // REVISIT - picks last email address from list, rather than all emails
+            ABMultiValueRef emailsRef = ABRecordCopyValue(contactPerson, kABPersonEmailProperty);
+            for (int i=0; i < ABMultiValueGetCount(emailsRef); i++) {
+                CFStringRef currentEmailValue = ABMultiValueCopyValueAtIndex(emailsRef, i);
+                if(currentEmailValue) {
+                    contact.email = [NSString stringWithString:(__bridge_transfer NSString*)currentEmailValue];
+                }
+            }
+
             // Get image if it exists
             NSData  *imgData = (__bridge_transfer NSData *)ABPersonCopyImageData(contactPerson);
             contact.image = [UIImage imageWithData:imgData];
@@ -348,9 +358,7 @@ UIBarButtonItem *barButton;
     // Enable Done button if total selected contacts > 0
     if(self.selectedContacts.count > 0) {
         barButton.enabled = TRUE;
-    }
-    else
-    {
+    } else {
         barButton.enabled = FALSE;
     }
     
