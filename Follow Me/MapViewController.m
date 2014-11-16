@@ -59,6 +59,10 @@
     location[@"location"] = point;
     location[@"time"] = [NSDate date];
     [location saveInBackground];
+    
+    // MVP - get locations for entire group from Parse
+    // MVP - move group's pins on map
+    // MVP - draw leader's path on map
 }
 
 - (void)didReceiveMemoryWarning {

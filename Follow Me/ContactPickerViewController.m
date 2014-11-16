@@ -35,6 +35,8 @@
 
 - (void)contactPickerViewControllerPickedContacts:(NSMutableArray *)selectedContacts {
     if (self.pickerDelegate) {
+        // MVP - instead of pushing contacts to delegate, use contact emails to query parse for their PFUser objects
+        // REVISIT LATER - query with hash of emails, so we don't pass actual emails up to cloud (personal data security issue)
         [self.pickerDelegate contactPickerViewControllerPickedContacts:selectedContacts];
     }
 
