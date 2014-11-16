@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 
 #define DEMO true
-#define SIMULATION_START_TIMESTAMP 1416009600
+#define SIMULATION_START_TIMESTAMP 1416009900
+#define SIMULATOR_TIME_MULTIPLIER 1
 
 @interface MapViewController ()
 
@@ -39,7 +40,8 @@
     
     // DEMO
     if (DEMO) {
-        self.demoTimestampOffset = (int)[[NSDate date] timeIntervalSince1970] - SIMULATION_START_TIMESTAMP;
+        self.demoTimeStamp = SIMULATION_START_TIMESTAMP;
+//        self.demoTimestampOffset = (int)[[NSDate date] timeIntervalSince1970] - SIMULATION_START_TIMESTAMP;
         [NSTimer scheduledTimerWithTimeInterval:1.0
                             target:self
                             selector:@selector(tickInterrupt)
@@ -68,7 +70,10 @@
 }
 
 - (void)tickInterrupt {
-    [self mapView:self.mapView didUpdateUserLocation:nil];
+    for (int i=0;i < SIMULATOR_TIME_MULTIPLIER;i++) {
+        self.demoTimeStamp++;
+        [self mapView:self.mapView didUpdateUserLocation:nil];
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -91,41 +96,31 @@
 
     
     if (self.leader) {
-        // MVP - get locations for entire group from Parse
-        PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
-        [query whereKey:@"userid" containedIn:self.members];
-        [query orderByDescending:@"timestamp"];
-        query.limit = 2;
-        NSLog(@"Getting locations");
-        [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
-            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
-                [location fetchIfNeeded];
-                NSLog(@"Location timestamp = %@",location[@"timestamp"]);
-                NSLog(@"New Location =%@",location[@"location"]);
-            }];
-            [self updateMap:locations];
-        }];
-        // MVP - move group's pins on map
-        // MVP - draw leader's path on map
-        
-        self.mapView.delegate = self;
-        
+        // MVP - get locations for entire group from Parse        
         [self.members enumerateObjectsUsingBlock:^(PFUser *member, NSUInteger idx, BOOL *stop) {
             PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
             [query whereKey:@"userid" equalTo:member];
             [query orderByDescending:@"timestamp"];
-            if (self.demoTimestampOffset > 0) {
-                int simulatedTimestamp = [[NSDate date] timeIntervalSince1970] - self.demoTimestampOffset;
+            if (self.demoTimeStamp > 0) {
+                int simulatedTimestamp = self.demoTimeStamp;
                 [query whereKey:@"timestamp" lessThanOrEqualTo:[NSNumber numberWithInt:simulatedTimestamp]];
             }
             query.limit = 1;
             [query getFirstObjectInBackgroundWithBlock:^(PFObject *location, NSError *error) {
-                [location fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                    PFUser *user = location[@"userid"];
-                    [user fetch];
-                    NSLog(@"location timestamp = %@, user = %@",location[@"timestamp"],user[@"username"]);
-                    [self updateMap:location];
-                }];
+                if (!error) {
+                    [location fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                        if (!error) {
+                            PFUser *user = location[@"userid"];
+                            [user fetch];
+                            NSLog(@"location timestamp = %@, user = %@",location[@"timestamp"],user[@"username"]);
+                            [self updateMap:location];
+                        } else {
+                            NSLog(@"ERROR: fetch for location failed");
+                        }
+                    }];
+                } else {
+                    NSLog(@"ERROR: query for locations failed");
+                }
             }];
         }];
 
