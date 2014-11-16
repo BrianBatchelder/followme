@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B115BEE31A18532800B402A9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60.png"; sourceTree = "<group>"; };
 		D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60@2x.png"; sourceTree = "<group>"; };
 		D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25.png"; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 		D3F85C261A17CD76001D3FE5 = {
 			isa = PBXGroup;
 			children = (
+				B115BEE31A18532800B402A9 /* README.md */,
 				D3F85C5D1A17D773001D3FE5 /* CoreLocation.framework */,
 				D3F85CAA1A181E3F001D3FE5 /* UIKit.framework */,
 				D3F85C5B1A17D352001D3FE5 /* MapKit.framework */,
