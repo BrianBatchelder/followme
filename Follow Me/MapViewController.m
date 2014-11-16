@@ -73,6 +73,8 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+
+
     if (userLocation) {
         //    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
         self.mapView.centerCoordinate = userLocation.location.coordinate;
@@ -164,6 +166,10 @@
     }
     
     }
+MKPointAnnotation *fPoint;
+MKPointAnnotation *lPoint;
+CLLocationCoordinate2D leaderPoints[10000];
+int i=0;
 
 
 - (void)updateMap:(PFObject *)location {
@@ -174,20 +180,66 @@
     // location[@"location"] gives you PFGeoPoint
     
 
+
+    PFUser *user = location[@"userid"];
+    [user fetchIfNeeded];
     
+    NSLog(@"leader is %@",self.leader.username);
+    if ([self.leader.username isEqualToString: user.username]) {
+        
+        PFGeoPoint *newLoc = location[@"location"];
+        NSLog(@"Leader location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+        
+        leaderPoints[i++] = coordinates;
+        
+        // Remove previous point
+        [self.mapView removeAnnotation:lPoint];
+        
+        // Add an annotation
+//        lPoint = [[MKPointAnnotation alloc] init];
+ //      lPoint.coordinate = coordinates;
+        
+        
+    //    [user fetchIfNeeded];
+    //    lPoint.title = user[@"username"];
+        
+   //     self.mapView.centerCoordinate = coordinates;
+        
+    //    [self.mapView addAnnotation:lPoint];
+
+        
+        // create a polyline with all cooridnates
+ //       NSLog(@"Adding line length %d",i);
+        MKPolyline *polyline = [MKPolyline polylineWithCoordinates:leaderPoints count:i-1];
+        
+        [self.mapView removeOverlays:self.mapView.overlays];
+        [self.mapView addOverlay:polyline];
     
-    PFGeoPoint *newLoc = location[@"location"];
-    NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
-    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+
+        
+        
+    } else {
+        
+        PFGeoPoint *newLoc = location[@"location"];
+        NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+        
+        // Remove previous point
+        [self.mapView removeAnnotation:fPoint];
+        
+        // Add an annotation
+        fPoint = [[MKPointAnnotation alloc] init];
+        fPoint.coordinate = coordinates;
+ 
     
-    // Add an annotation
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = coordinates;
-    point.title = @"New Spot";
+        [user fetchIfNeeded];
+        fPoint.title = user[@"username"];
     
-    self.mapView.centerCoordinate = coordinates;
+        self.mapView.centerCoordinate = coordinates;
     
-    [self.mapView addAnnotation:point];
+        [self.mapView addAnnotation:fPoint];
+    }
     
 //
 //    MKPlacemark *newMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
