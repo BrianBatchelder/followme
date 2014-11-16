@@ -61,7 +61,7 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    self.mapView.centerCoordinate = userLocation.location.coordinate;
+//    self.mapView.centerCoordinate = userLocation.location.coordinate;
 //    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
 
     // save to Parse
@@ -160,22 +160,30 @@
     // location[@"userid"] gives you PFUser
     // location[@"location"] gives you PFGeoPoint
     
-    
-    PFGeoPoint *newLoc = location[@"location"];
-    NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
-    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
-    
-    // Add an annotation
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = coordinates;
+
 
     PFUser *user = location[@"userid"];
     [user fetchIfNeeded];
-    point.title = user[@"username"];
     
-    self.mapView.centerCoordinate = coordinates;
+    NSLog(@"leader is %@",self.leader.username);
+    if ([self.leader.username isEqualToString: user.username]) {
+        
+        PFGeoPoint *newLoc = location[@"location"];
+        NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+        
+        // Add an annotation
+        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        point.coordinate = coordinates;
+ 
     
-    [self.mapView addAnnotation:point];
+        [user fetchIfNeeded];
+        point.title = user[@"username"];
+    
+        self.mapView.centerCoordinate = coordinates;
+    
+        [self.mapView addAnnotation:point];
+    }
     
 //
 //    MKPlacemark *newMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
