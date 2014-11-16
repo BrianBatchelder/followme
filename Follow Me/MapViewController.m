@@ -151,6 +151,10 @@
     }
     
     }
+MKPointAnnotation *fPoint;
+MKPointAnnotation *lPoint;
+CLLocationCoordinate2D leaderPoints[10000];
+int i=0;
 
 
 - (void)updateMap:(PFObject *)location {
@@ -169,20 +173,57 @@
     if ([self.leader.username isEqualToString: user.username]) {
         
         PFGeoPoint *newLoc = location[@"location"];
+        NSLog(@"Leader location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+        
+        leaderPoints[i++] = coordinates;
+        
+        // Remove previous point
+        [self.mapView removeAnnotation:lPoint];
+        
+        // Add an annotation
+//        lPoint = [[MKPointAnnotation alloc] init];
+ //      lPoint.coordinate = coordinates;
+        
+        
+    //    [user fetchIfNeeded];
+    //    lPoint.title = user[@"username"];
+        
+   //     self.mapView.centerCoordinate = coordinates;
+        
+    //    [self.mapView addAnnotation:lPoint];
+
+        
+        // create a polyline with all cooridnates
+ //       NSLog(@"Adding line length %d",i);
+        MKPolyline *polyline = [MKPolyline polylineWithCoordinates:leaderPoints count:i-1];
+        
+        [self.mapView removeOverlays:self.mapView.overlays];
+        [self.mapView addOverlay:polyline];
+    
+
+        
+        
+    } else {
+        
+        PFGeoPoint *newLoc = location[@"location"];
         NSLog(@"Showing new location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
         CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
         
+        // Remove previous point
+        [self.mapView removeAnnotation:fPoint];
+        
         // Add an annotation
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        point.coordinate = coordinates;
+        fPoint = [[MKPointAnnotation alloc] init];
+        fPoint.coordinate = coordinates;
  
     
         [user fetchIfNeeded];
-        point.title = user[@"username"];
+        fPoint.title = user[@"username"];
     
         self.mapView.centerCoordinate = coordinates;
     
-        [self.mapView addAnnotation:point];
+        [self.mapView addAnnotation:fPoint];
     }
     
 //
