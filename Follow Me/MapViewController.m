@@ -35,6 +35,8 @@
     }
 
     self.leader = nil;
+    self.followers = nil;
+    self.members = nil;
 
     NSUInteger code = [CLLocationManager authorizationStatus];
     if (code == kCLAuthorizationStatusNotDetermined && ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
@@ -69,7 +71,17 @@
     
     if (self.leader) {
         // MVP - get locations for entire group from Parse
-        
+        PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
+        [query whereKey:@"userid" containedIn:self.members];
+        [query orderByDescending:@"timestamp"];
+        query.limit = 2;
+        [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
+            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
+                [location fetchIfNeeded];
+                NSLog(@"Location timestamp = %@",location[@"timestamp"]);
+            }];
+            [self updateMap:locations];
+        }];
         // MVP - move group's pins on map
         // MVP - draw leader's path on map
     } else {
@@ -91,6 +103,13 @@
                     self.followers = currentCaravan[@"followers"];
                     [self.followers enumerateObjectsUsingBlock:^(PFUser *follower, NSUInteger idx, BOOL *stop) {
                         [follower fetchIfNeeded];
+                    }];
+                }
+                NSLog(@"Follower = %@",((PFUser *)[self.followers objectAtIndex:0]).username);
+                if (!self.members) {
+                    self.members = currentCaravan[@"members"];
+                    [self.members enumerateObjectsUsingBlock:^(PFUser *member, NSUInteger idx, BOOL *stop) {
+                        [member fetchIfNeeded];
                     }];
                 }
                 NSLog(@"Follower = %@",((PFUser *)[self.followers objectAtIndex:0]).username);
@@ -136,6 +155,12 @@
     }];
     
 }
+
+
+- (void)updateMap:(NSArray *)locations {
+    
+}
+
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {

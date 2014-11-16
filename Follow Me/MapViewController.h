@@ -16,8 +16,11 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-@property (strong,nonatomic) NSMutableArray *followers;
 @property (strong,nonatomic) PFUser *leader;
+@property (strong,nonatomic) NSMutableArray *followers;
+@property (strong,nonatomic) NSMutableArray *members;
+
+- (void)updateMap:(NSArray *)locations;
 
 @end
 
