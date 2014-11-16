@@ -58,7 +58,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
-    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
 
     // save to Parse
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
@@ -70,20 +70,18 @@
     [location saveInBackground];
     
     if (self.leader) {
-        // MVP - get locations for entire group from Parse
-        PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
-        [query whereKey:@"userid" containedIn:self.members];
-        [query orderByDescending:@"timestamp"];
-        query.limit = 2;
-        [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
-            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
-                [location fetchIfNeeded];
-                NSLog(@"Location timestamp = %@",location[@"timestamp"]);
+        [self.members enumerateObjectsUsingBlock:^(PFUser *member, NSUInteger idx, BOOL *stop) {
+            PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
+            [query whereKey:@"userid" equalTo:member];
+            [query orderByDescending:@"timestamp"];
+            query.limit = 1;
+            [query getFirstObjectInBackgroundWithBlock:^(PFObject *location, NSError *error) {
+                [location fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    NSLog(@"location timestamp = %@",location[@"timestamp"]);
+                    [self updateMap:location];
+                }];
             }];
-            [self updateMap:locations];
         }];
-        // MVP - move group's pins on map
-        // MVP - draw leader's path on map
     } else {
         PFQuery *query = [PFQuery queryWithClassName:@"Caravan"];
         [query whereKey:@"members" equalTo:[PFUser currentUser]];
@@ -157,8 +155,12 @@
 }
 
 
-- (void)updateMap:(NSArray *)locations {
+- (void)updateMap:(PFObject *)location {
+    // MVP - move group's pins on map
+    // MVP - draw leader's path on map
     
+    // location[@"userid"] gives you PFUser
+    // location[@"location"] gives you PFGeoPoint
 }
 
 
