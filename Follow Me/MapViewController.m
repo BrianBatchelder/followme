@@ -192,16 +192,16 @@ int i=0;
         [self.mapView removeAnnotation:lPoint];
         
         // Add an annotation
-//        lPoint = [[MKPointAnnotation alloc] init];
- //      lPoint.coordinate = coordinates;
+        lPoint = [[MKPointAnnotation alloc] init];
+       lPoint.coordinate = coordinates;
         
         
-    //    [user fetchIfNeeded];
-    //    lPoint.title = user[@"username"];
+        [user fetchIfNeeded];
+        lPoint.title = user[@"username"];
         
-   //     self.mapView.centerCoordinate = coordinates;
+     //   self.mapView.centerCoordinate = coordinates;
         
-    //    [self.mapView addAnnotation:lPoint];
+        [self.mapView addAnnotation:lPoint];
 
         
         // create a polyline with all cooridnates
