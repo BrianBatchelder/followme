@@ -216,7 +216,7 @@ int i=0;
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView addOverlay:polyline];
     
-
+        self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
         
     } else {
