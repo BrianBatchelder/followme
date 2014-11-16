@@ -72,7 +72,6 @@
 		D33748EE1A1853E000BDC1F7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D33748F01A1853E900BDC1F7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D33748F21A18551800BDC1F7 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		D33748F21A18551800BDC1F7 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		D358ACC81A184E9C002E7E9A /* icon-avatar-60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60.png"; sourceTree = "<group>"; };
 		D358ACC91A184E9C002E7E9A /* icon-avatar-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-avatar-60x60@2x.png"; sourceTree = "<group>"; };
 		D358ACCA1A184E9C002E7E9A /* icon-checkbox-selected-green-25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-checkbox-selected-green-25x25.png"; sourceTree = "<group>"; };
@@ -202,7 +201,7 @@
 		D3F85C261A17CD76001D3FE5 = {
 			isa = PBXGroup;
 			children = (
-                B115BEE31A18532800B402A9 /* README.md */,
+				B115BEE31A18532800B402A9 /* README.md */,
 				D33748DB1A18534300BDC1F7 /* Frameworks */,
 				D3F85C311A17CD76001D3FE5 /* Follow Me */,
 				D3F85C4E1A17CD76001D3FE5 /* Follow MeTests */,
@@ -228,14 +227,14 @@
 				D3F85C371A17CD76001D3FE5 /* AppDelegate.m */,
 				D3F85CC71A182E2E001D3FE5 /* WelcomeViewController.h */,
 				D3F85CC81A182E2E001D3FE5 /* WelcomeViewController.m */,
+				D3F85CC41A1829FC001D3FE5 /* ContactPickerViewController.h */,
+				D3F85CC51A1829FC001D3FE5 /* ContactPickerViewController.m */,
 				D3F85C3C1A17CD76001D3FE5 /* MapViewController.h */,
 				D3F85C3D1A17CD76001D3FE5 /* MapViewController.m */,
 				D3F85C421A17CD76001D3FE5 /* Images.xcassets */,
 				D3F85C441A17CD76001D3FE5 /* LaunchScreen.xib */,
 				D3F85C391A17CD76001D3FE5 /* Follow_Me.xcdatamodeld */,
 				D3F85C321A17CD76001D3FE5 /* Supporting Files */,
-				D3F85CC41A1829FC001D3FE5 /* ContactPickerViewController.h */,
-				D3F85CC51A1829FC001D3FE5 /* ContactPickerViewController.m */,
 			);
 			path = "Follow Me";
 			sourceTree = "<group>";

@@ -19,6 +19,10 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     
+    // set a reasonable starting zoom level
+    MKMapRect startingZoom = MKMapRectMake(1,1,50000,50000);
+    [self.mapView setVisibleMapRect:startingZoom animated:NO];
+    
     // request location
     self.locationManager = [[CLLocationManager alloc] init];
     // Set a delegate to receive location callbacks
