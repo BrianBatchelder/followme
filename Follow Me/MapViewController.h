@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong,nonatomic) NSMutableArray *followers;
+@property (strong,nonatomic) PFUser *leader;
 
 @end
 

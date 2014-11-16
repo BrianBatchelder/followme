@@ -45,7 +45,20 @@
     if ([[segue identifier] isEqualToString:@"showContactPicker"]) {
         [(ContactPickerViewController *)[segue destinationViewController] setPickerDelegate:self];
     } else if ([[segue identifier] isEqualToString:@"showMapView"]) {
-        [(MapViewController *)[segue destinationViewController] setFollowers:self.followers];
+//        [(MapViewController *)[segue destinationViewController] setFollowers:self.followers];
+        if ([self.followers count] > 0) {
+//            [(MapViewController *)[segue destinationViewController] setLeader:[PFUser currentUser]];
+
+            // create caravan object on Parse
+            PFObject *caravan = [[PFObject alloc] initWithClassName:@"Caravan"];
+            caravan[@"leader"] = [PFUser currentUser];
+            caravan[@"followers"] = self.followers;
+            NSMutableArray *everyone = [[NSMutableArray alloc] init ];
+            [everyone addObjectsFromArray:self.followers];
+            [everyone addObject:caravan[@"leader"]];
+            caravan[@"members"] = everyone;
+            [caravan saveInBackground];
+        }
     }
 }
 

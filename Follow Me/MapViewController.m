@@ -29,9 +29,10 @@
     // Set a delegate to receive location callbacks
     self.locationManager.delegate = self;
     
-
-
-    
+    // HACK leaders and followers
+    if ([self.followers count] == 0) {
+        [self.followers addObject:[PFUser currentUser]];
+    }
 
 
     NSUInteger code = [CLLocationManager authorizationStatus];
@@ -65,13 +66,31 @@
     location[@"time"] = [NSDate date];
     [location saveInBackground];
     
-    // MVP - get locations for entire group from Parse
-    // MVP - move group's pins on map
-    // MVP - draw leader's path on map
+    if (!self.leader) {
+        PFQuery *query = [PFQuery queryWithClassName:@"Caravan"];
+        [query whereKey:@"members" equalTo:[PFUser currentUser]];
+        [query orderByDescending:@"updatedAt"];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *currentCaravan, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved caravan");
+                self.leader = currentCaravan[@"leader"];
+                self.followers = currentCaravan[@"followers"];
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    } else {
+        // MVP - get locations for entire group from Parse
+        
+        // MVP - move group's pins on map
+        // MVP - draw leader's path on map
+    }
+    
     
     self.mapView.delegate = self;
 
-    
     NSString *address = @"2107 S 320th St, FederalWay, WA, 98003";
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
     [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -86,26 +105,23 @@
         //      NSDictionary *options = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
         //      [mapItem openInMapsWithLaunchOptions:options];
         
-        
-        
-        
-        
-        
         MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
         [request setSource:[MKMapItem mapItemForCurrentLocation]];
         [request setDestination:mapItem];
-        [request setTransportType:MKDirectionsTransportTypeAny];
+        [request setTransportType:MKDirectionsTransportTypeAutomobile];
         [request setRequestsAlternateRoutes:YES];
         MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
         [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-            if (!error) {
+            if (error) {
+                NSLog(@"There was an error getting your directions");
+                return;
+            } else {
                 for (MKRoute *route in [response routes]) {
-                    [self.mapView  addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
+                  [self.mapView  addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
                 }
             }
         }];
     }];
-    
     
 }
 
