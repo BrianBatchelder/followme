@@ -34,6 +34,7 @@
         [self.followers addObject:[PFUser currentUser]];
     }
 
+    self.leader = nil;
 
     NSUInteger code = [CLLocationManager authorizationStatus];
     if (code == kCLAuthorizationStatusNotDetermined && ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
@@ -66,7 +67,12 @@
     location[@"time"] = [NSDate date];
     [location saveInBackground];
     
-    if (!self.leader) {
+    if (self.leader) {
+        // MVP - get locations for entire group from Parse
+        
+        // MVP - move group's pins on map
+        // MVP - draw leader's path on map
+    } else {
         PFQuery *query = [PFQuery queryWithClassName:@"Caravan"];
         [query whereKey:@"members" equalTo:[PFUser currentUser]];
         [query orderByDescending:@"updatedAt"];
@@ -74,20 +80,26 @@
             if (!error) {
                 // The find succeeded.
                 NSLog(@"Successfully retrieved caravan");
-                self.leader = currentCaravan[@"leader"];
-                self.followers = currentCaravan[@"followers"];
+                if (!self.leader) {
+                    self.leader = (PFUser *)currentCaravan[@"leader"];
+                    [self.leader fetchIfNeeded];
+                    NSLog(@"assigned leader\n");
+                }
+                NSLog(@"displaying leader\n");
+                NSLog(@"Leader = %@\n",self.leader.username);
+                if (!self.followers) {
+                    self.followers = currentCaravan[@"followers"];
+                    [self.followers enumerateObjectsUsingBlock:^(PFUser *follower, NSUInteger idx, BOOL *stop) {
+                        [follower fetchIfNeeded];
+                    }];
+                }
+                NSLog(@"Follower = %@",((PFUser *)[self.followers objectAtIndex:0]).username);
             } else {
                 // Log details of the failure
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
-    } else {
-        // MVP - get locations for entire group from Parse
-        
-        // MVP - move group's pins on map
-        // MVP - draw leader's path on map
     }
-    
     
     self.mapView.delegate = self;
 
