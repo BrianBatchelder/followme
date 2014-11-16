@@ -19,6 +19,7 @@
 @property (strong,nonatomic) PFUser *leader;
 @property (strong,nonatomic) NSMutableArray *followers;
 @property (strong,nonatomic) NSMutableArray *members;
+@property int demoTimestampOffset;
 
 - (void)updateMap:(PFObject *)location;
 
