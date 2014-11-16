@@ -20,7 +20,7 @@
 @property (strong,nonatomic) NSMutableArray *followers;
 @property (strong,nonatomic) NSMutableArray *members;
 
-- (void)updateMap:(NSArray *)locations;
+- (void)updateMap:(PFObject *)location;
 
 @end
 

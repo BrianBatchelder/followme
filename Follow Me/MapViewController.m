@@ -58,7 +58,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
-    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//    NSLog(@"Got user location - lat = %f, lon = %f\n",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
 
     // save to Parse
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
@@ -84,60 +84,26 @@
             }];
             [self updateMap:locations];
             
-            NSLog(@"Get locs",locations);
-            PFGeoPoint *newLoc = [location objectForKey:@"Location"];
-            NSLog(@"newLoc location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
-            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
-            NSLog(@"Showing location - lat = %f, lon = %f\n",coordinates.latitude,coordinates.longitude);
-            
-            MKPlacemark *newMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
-            MKMapItem *newMapItem = [[MKMapItem alloc]initWithPlacemark:newMark];
-            newMapItem.name = @"New point";
-            
-            
-            NSString *address = @"2107 S 320th St, FederalWay, WA, 98003";
-            CLGeocoder *geocoder = [[CLGeocoder alloc]init];
-            [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
-                CLPlacemark *placemark = placemarks.lastObject;
-                CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
-                MKPlacemark *placeMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
-                
-                
-                
-                MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placeMark];
-                mapItem.name = @"Panera Bread";
-                //      NSDictionary *options = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-                //      [mapItem openInMapsWithLaunchOptions:options];
-                
-                MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-                //    [request setSource:[MKMapItem mapItemForCurrentLocation]];
-                [request setSource: newMapItem];
-                [request setDestination:mapItem];
-                [request setTransportType:MKDirectionsTransportTypeAutomobile];
-                [request setRequestsAlternateRoutes:YES];
-                MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-                [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-                    if (error) {
-                        NSLog(@"There was an error getting your directions");
-                        return;
-                    } else {
-                        for (MKRoute *route in [response routes]) {
-                            [self.mapView  addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
-                        }
-                    }
-                }];
-            }];
-            
+
         }];
         // MVP - move group's pins on map
         // MVP - draw leader's path on map
         
         self.mapView.delegate = self;
+        
+        [self.members enumerateObjectsUsingBlock:^(PFUser *member, NSUInteger idx, BOOL *stop) {
+            PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
+            [query whereKey:@"userid" equalTo:member];
+            [query orderByDescending:@"timestamp"];
+            query.limit = 1;
+            [query getFirstObjectInBackgroundWithBlock:^(PFObject *location, NSError *error) {
+                [location fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                    NSLog(@"location timestamp = %@",location[@"timestamp"]);
+                    [self updateMap:location];
+                }];
+            }];
+        }];
 
-        
-
-        
-        
     } else {
         PFQuery *query = [PFQuery queryWithClassName:@"Caravan"];
         [query whereKey:@"members" equalTo:[PFUser currentUser]];
@@ -177,7 +143,56 @@
     }
 
 
-- (void)updateMap:(NSArray *)locations {
+- (void)updateMap:(PFObject *)location {
+    // MVP - move group's pins on map
+    // MVP - draw leader's path on map
+    
+    // location[@"userid"] gives you PFUser
+    // location[@"location"] gives you PFGeoPoint
+    
+    
+    PFGeoPoint *newLoc = [location objectForKey:@"Location"];
+    NSLog(@"newLoc location - lat = %f, lon = %f\n",newLoc.latitude,newLoc.longitude);
+    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(newLoc.latitude,newLoc.longitude);
+    NSLog(@"Showing location - lat = %f, lon = %f\n",coordinates.latitude,coordinates.longitude);
+    
+    MKPlacemark *newMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
+    MKMapItem *newMapItem = [[MKMapItem alloc]initWithPlacemark:newMark];
+    newMapItem.name = @"New point";
+    
+    
+    NSString *address = @"2107 S 320th St, FederalWay, WA, 98003";
+    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark = placemarks.lastObject;
+        CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
+        MKPlacemark *placeMark = [[MKPlacemark alloc]initWithCoordinate:coordinates addressDictionary:nil];
+        
+        
+        
+        MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placeMark];
+        mapItem.name = @"Panera Bread";
+        //      NSDictionary *options = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+        //      [mapItem openInMapsWithLaunchOptions:options];
+        
+        MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+        //    [request setSource:[MKMapItem mapItemForCurrentLocation]];
+        [request setSource: newMapItem];
+        [request setDestination:mapItem];
+        [request setTransportType:MKDirectionsTransportTypeAutomobile];
+        [request setRequestsAlternateRoutes:YES];
+        MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
+        [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+            if (error) {
+                NSLog(@"There was an error getting your directions");
+                return;
+            } else {
+                for (MKRoute *route in [response routes]) {
+                    [self.mapView  addOverlay:[route polyline] level:MKOverlayLevelAboveRoads];
+                }
+            }
+        }];
+    }];
     
 }
 
