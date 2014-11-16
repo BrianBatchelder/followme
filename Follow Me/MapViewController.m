@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import <Parse/Parse.h>
 
+#define SIMULATION_START_TIMESTAMP 1416009600
+
 @interface MapViewController ()
 
 @end
@@ -37,6 +39,8 @@
     self.leader = nil;
     self.followers = nil;
     self.members = nil;
+    
+    self.demoTimestampOffset = (int)[[NSDate date] timeIntervalSince1970] - SIMULATION_START_TIMESTAMP;
 
     NSUInteger code = [CLLocationManager authorizationStatus];
     if (code == kCLAuthorizationStatusNotDetermined && ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
@@ -95,10 +99,16 @@
             PFQuery *query = [PFQuery queryWithClassName:@"MockRoute"];
             [query whereKey:@"userid" equalTo:member];
             [query orderByDescending:@"timestamp"];
+            if (self.demoTimestampOffset > 0) {
+                int simulatedTimestamp = [[NSDate date] timeIntervalSince1970] - self.demoTimestampOffset;
+                [query whereKey:@"timestamp" lessThanOrEqualTo:[NSNumber numberWithInt:simulatedTimestamp]];
+            }
             query.limit = 1;
             [query getFirstObjectInBackgroundWithBlock:^(PFObject *location, NSError *error) {
                 [location fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                    NSLog(@"location timestamp = %@",location[@"timestamp"]);
+                    PFUser *user = location[@"userid"];
+                    [user fetch];
+                    NSLog(@"location timestamp = %@, user = %@",location[@"timestamp"],user[@"username"]);
                     [self updateMap:location];
                 }];
             }];
@@ -135,7 +145,7 @@
                 NSLog(@"Follower = %@",((PFUser *)[self.followers objectAtIndex:0]).username);
             } else {
                 // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                NSLog(@"Error fetching caravan: %@ %@", error, [error userInfo]);
             }
         }];
     }
